@@ -4,6 +4,8 @@
 # Name: String
 # Age: Integer
 # Gender: String
+
+
 # API: GET, GET(by_ID),POST, POST(by_ID),PUT(by_ID), DELETE, DELETE(by_ID)
 swagger: '2.0'
 info:
@@ -50,7 +52,7 @@ paths:
           in: query
           description: tags to filter by
           required: true
-          type: string
+          type: array
           items:
             type: string
          
@@ -65,8 +67,10 @@ paths:
           in: query
           description: maximum number of results to return
           required: false
-          type: string
+          type: integer
           format: int32
+
+          
       responses:
         '200':
           description: pet response
@@ -77,9 +81,8 @@ paths:
         default:
           description: unexpected error
           schema:
-            $ref: '#/definitions/errorModel' 
-    
-    
+            $ref: '#/definitions/errorModel'  
+     
     post:
       description: Creates a new student
       operationId: addPet
@@ -102,10 +105,11 @@ paths:
           schema:
             $ref: '#/definitions/errorModel'
     
+
   /student/{id}:
     get:
-      description: Returns a user based on a single ID, if the user does not have access to the pet
-      operationId: findPetById
+      description: Returns a student based on a single ID
+      operationId: findStudentById
       produces:
         - application/json
         - application/xml
@@ -144,8 +148,8 @@ paths:
           description: unexpected error
           schema:
             $ref: '#/definitions/errorModel'
-    
-          
+
+
         
         
 definitions:
@@ -177,8 +181,6 @@ definitions:
         format: int32
       message:
         type: string
-  
-
   
 
 
